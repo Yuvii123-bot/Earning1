@@ -1,7 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
+import { BUSINESSES } from "@/data/businesses";
 
 export const dynamic = "force-dynamic";
+
+function fallbackBusinesses() {
+  return BUSINESSES.map((b) => ({
+    slug: b.slug,
+    business_name: b.name,
+    city: b.city,
+    neighborhood: b.neighborhood,
+    category: b.heroBadge,
+    email: b.email,
+    phone: b.phoneDisplay,
+    whatsapp: b.whatsappDigits || null,
+    current_website: b.currentWebsiteStatus,
+    audit_issue: b.auditSummary,
+    pitch_price_npr: b.pitchPriceNpr,
+    monthly_care_npr: b.monthlyCareNpr,
+    custom_domain: null,
+    outreach_status: "ready",
+    gmail_message_id: null,
+    gmail_thread_id: null,
+    emailed_at: null,
+    view_count: 0,
+    owner_view_count: 0,
+    last_viewed_at: null,
+  }));
+}
 
 export async function GET() {
   try {
@@ -20,19 +46,22 @@ export async function GET() {
           .limit(50),
       ]);
 
-    if (bErr) {
-      return NextResponse.json({ error: bErr.message }, { status: 500 });
+    if (bErr || !businesses) {
+      return NextResponse.json({
+        businesses: fallbackBusinesses(),
+        inquiries: [],
+      });
     }
 
     return NextResponse.json({
-      businesses: businesses || [],
+      businesses,
       inquiries: inquiries || [],
     });
-  } catch (err) {
-    return NextResponse.json(
-      { error: err instanceof Error ? err.message : "Failed to load leads" },
-      { status: 500 }
-    );
+  } catch {
+    return NextResponse.json({
+      businesses: fallbackBusinesses(),
+      inquiries: [],
+    });
   }
 }
 

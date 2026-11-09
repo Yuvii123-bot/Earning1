@@ -19,7 +19,7 @@ function fallbackBusinesses() {
     pitch_price_npr: b.pitchPriceNpr,
     monthly_care_npr: b.monthlyCareNpr,
     custom_domain: null,
-    outreach_status: "ready",
+    outreach_status: "emailed",
     gmail_message_id: null,
     gmail_thread_id: null,
     emailed_at: null,

@@ -1,8 +1,21 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Sparkles, CheckCircle2, X, Mail, ShieldCheck, Globe } from "lucide-react";
+import {
+  Sparkles,
+  CheckCircle2,
+  X,
+  Mail,
+  ShieldCheck,
+  Globe,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
 import type { BusinessConfig } from "@/data/businesses";
+
+const FOUNDER_WHATSAPP = "9779847509025";
+const FOUNDER_PHONE_DISPLAY = "+977 9847509025";
+const FOUNDER_EMAIL = "imyuvojha@gmail.com";
 
 export function PreviewClaimBanner({
   business,
@@ -31,7 +44,11 @@ export function PreviewClaimBanner({
 
   if (!isPreview || dismissed) return null;
 
-  const mailtoHref = `mailto:imyuvojha@gmail.com?subject=${encodeURIComponent(
+  const whatsappHref = `https://wa.me/${FOUNDER_WHATSAPP}?text=${encodeURIComponent(
+    `Hi Yuvraj! We just checked the live preview website you built for ${business.name} (${business.neighborhood}, ${business.city}) and would like to discuss connecting it to our domain.`
+  )}`;
+
+  const mailtoHref = `mailto:${FOUNDER_EMAIL}?subject=${encodeURIComponent(
     `Interested in activating website for ${business.name}`
   )}&body=${encodeURIComponent(
     `Hi Yuvraj,\n\nWe checked the live preview built for ${business.name} (${business.neighborhood}, ${business.city}) and would like to discuss putting it live on our domain.\n\nBest regards,\n${business.name}`
@@ -55,6 +72,15 @@ export function PreviewClaimBanner({
             </div>
           </div>
           <div className="flex items-center gap-2 self-end sm:self-auto">
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/15 px-3 py-2 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500/25"
+            >
+              <MessageCircle className="h-3.5 w-3.5" />
+              WhatsApp
+            </a>
             <button
               onClick={() => setModalOpen(true)}
               className="rounded-xl bg-emerald-500 px-4 py-2 text-xs font-semibold text-zinc-950 transition hover:bg-emerald-400"
@@ -127,20 +153,32 @@ export function PreviewClaimBanner({
               <ShieldCheck className="h-7 w-7 text-emerald-400" />
             </div>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-2.5">
               <a
-                href={mailtoHref}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-400"
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-400"
               >
-                <Mail className="h-4 w-4" />
-                Email Yuvraj to Claim This Site
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp Yuvraj ({FOUNDER_PHONE_DISPLAY})
               </a>
-              <button
-                onClick={() => setModalOpen(false)}
-                className="rounded-xl border border-zinc-700 px-4 py-3 text-sm font-medium text-zinc-300 hover:bg-zinc-900"
-              >
-                Continue Testing
-              </button>
+              <div className="grid grid-cols-2 gap-2.5">
+                <a
+                  href={`tel:+${FOUNDER_WHATSAPP}`}
+                  className="flex items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-xs font-semibold text-zinc-200 hover:bg-zinc-800"
+                >
+                  <Phone className="h-3.5 w-3.5 text-emerald-400" />
+                  Call {FOUNDER_PHONE_DISPLAY}
+                </a>
+                <a
+                  href={mailtoHref}
+                  className="flex items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-xs font-semibold text-zinc-200 hover:bg-zinc-800"
+                >
+                  <Mail className="h-3.5 w-3.5 text-emerald-400" />
+                  Claim via Email
+                </a>
+              </div>
             </div>
           </div>
         </div>

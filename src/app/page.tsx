@@ -127,11 +127,13 @@ export default async function HomePage() {
               NPR Packages
             </a>
             <a
-              href="mailto:imyuvojha@gmail.com?subject=Custom%20Website%20Inquiry%20(Nepal)"
+              href="https://wa.me/9779847509025?text=Hi%20Yuvraj!%20Interested%20in%20a%20custom%20website%20for%20our%20business."
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-500 px-4 py-2 text-xs font-bold text-zinc-950 transition hover:bg-emerald-400"
             >
-              <Mail className="h-3.5 w-3.5" />
-              Contact Studio
+              <MessageCircle className="h-3.5 w-3.5" />
+              WhatsApp +977 9847509025
             </a>
           </div>
         </div>
@@ -163,10 +165,13 @@ export default async function HomePage() {
               <ArrowUpRight className="h-4 w-4" />
             </a>
             <a
-              href="mailto:imyuvojha@gmail.com?subject=Request%20Custom%20Website%20Preview"
+              href="https://wa.me/9779847509025?text=Hi%20Yuvraj!%20Interested%20in%20a%20custom%20website%20preview."
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900 px-6 py-3.5 text-sm font-semibold text-zinc-200 hover:border-zinc-700"
             >
-              imyuvojha@gmail.com
+              <MessageCircle className="h-4 w-4 text-emerald-400" />
+              WhatsApp: +977 9847509025
             </a>
           </div>
         </div>

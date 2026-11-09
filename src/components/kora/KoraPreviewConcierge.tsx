@@ -21,14 +21,17 @@ const CONCIERGE_EMAIL = "imyuvojha@gmail.com";
 export function KoraPreviewConcierge({
   business,
   isPreview,
+  isFounder = false,
 }: {
   business: KoraBusinessConfig;
   isPreview: boolean;
+  isFounder?: boolean;
 }) {
   const [dismissed, setDismissed] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
+    if (isFounder) return;
     const key = `kora_tracked_${business.slug}_${isPreview ? "p" : "d"}`;
     if (typeof window !== "undefined" && !sessionStorage.getItem(key)) {
       sessionStorage.setItem(key, "1");
@@ -41,7 +44,7 @@ export function KoraPreviewConcierge({
         }),
       }).catch(() => {});
     }
-  }, [business.slug, isPreview]);
+  }, [business.slug, isPreview, isFounder]);
 
   if (!isPreview || dismissed) return null;
 

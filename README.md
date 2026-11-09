@@ -1,42 +1,39 @@
-# Yuvraj Digital Studio — Build-First Micro-Site Engine (Kathmandu & Pokhara, Nepal)
+# Atelier Kora (Batch 2) + Nepal Web Studio (Batch 1) — Multi-Tenant Build-First Engine
 
-Live Production URL: **`https://nepal-web-studio.vercel.app`**  
-Founder CRM & Open-Tracking Console: **`https://nepal-web-studio.vercel.app/dashboard`**
+## Live Production Deployments
 
-A multi-tenant Next.js 16 + Supabase production platform powering **8 bespoke, mobile-first websites** built for verified businesses in **Kathmandu** and **Pokhara**, complete with real-time owner preview-open tracking, WhatsApp booking calculators, and zero-code custom-domain handover.
+- **Atelier Kora — Batch 2 Luxury Flagship Studio:** **`https://atelier-kora-xi.vercel.app`**
+- **Unified Partner CRM & Real-Time Open Telemetry:** **`https://atelier-kora-xi.vercel.app/dashboard`**
+- **Batch 1 Legacy Deployment (Untouched & Live):** **`https://nepal-web-studio.vercel.app`**
 
 ---
 
-## 1. Live Client Builds & Outreach Pipeline
+## Batch 2 — Atelier Kora (10 High-Ticket, Email-Active Luxury Prospects · NPR 244,990 Pipeline)
 
-| # | Business | City / Area | Prospect Email | Turnkey Pitch | Live Preview URL (Sent in Email) | Clean White-Label URL |
+| # | Business & Decision-Maker | City / Area | Prospect Email | Pitch (NPR) | Live Preview URL (Sent) | Clean Client URL |
 |---|---|---|---|---|---|---|
-| 1 | **EVOKE Cafe & Bistro** | Jhamsikhel, Kathmandu | `evoke.cafebistro@gmail.com` | NPR 14,999 | [`/evoke-jhamsikhel?preview=1`](https://nepal-web-studio.vercel.app/evoke-jhamsikhel?preview=1) | [`/evoke-jhamsikhel`](https://nepal-web-studio.vercel.app/evoke-jhamsikhel) |
-| 2 | **Apple Dental Clinic** | Panipokhari, Lazimpat | `appledentalnepal@gmail.com` | NPR 11,999 | [`/apple-dental?preview=1`](https://nepal-web-studio.vercel.app/apple-dental?preview=1) | [`/apple-dental`](https://nepal-web-studio.vercel.app/apple-dental) |
-| 3 | **Smile Signature Nepal** | Blue Note Bldg, Lazimpat | `drbhusal80@gmail.com` | NPR 12,999 | [`/smile-signature?preview=1`](https://nepal-web-studio.vercel.app/smile-signature?preview=1) | [`/smile-signature`](https://nepal-web-studio.vercel.app/smile-signature) |
-| 4 | **Advance Paragliding Pvt. Ltd** | Lakeside St. 7, Pokhara | `advance.parabooking@gmail.com` | NPR 14,999 | [`/advance-paragliding?preview=1`](https://nepal-web-studio.vercel.app/advance-paragliding?preview=1) | [`/advance-paragliding`](https://nepal-web-studio.vercel.app/advance-paragliding) |
-| 5 | **Green Spa Pokhara Lakeside** | Lakeside St. 14, Pokhara | `greenspa94@gmail.com` | NPR 9,999 | [`/green-spa-pokhara?preview=1`](https://nepal-web-studio.vercel.app/green-spa-pokhara?preview=1) | [`/green-spa-pokhara`](https://nepal-web-studio.vercel.app/green-spa-pokhara) |
-| 6 | **Le Spa by Donaldji** | Hallanchowk, Pokhara | `info.lespabydonaldji@gmail.com` | NPR 12,999 | [`/le-spa-pokhara?preview=1`](https://nepal-web-studio.vercel.app/le-spa-pokhara?preview=1) | [`/le-spa-pokhara`](https://nepal-web-studio.vercel.app/le-spa-pokhara) |
-| 7 | **Rosemary Spa & Beauty Home** | Lakeside St. 16, Pokhara | `rosemaryspa.pkr@gmail.com` | NPR 10,999 | [`/rosemary-spa?preview=1`](https://nepal-web-studio.vercel.app/rosemary-spa?preview=1) | [`/rosemary-spa`](https://nepal-web-studio.vercel.app/rosemary-spa) |
-| 8 | **MediTouch Skin & Hair Clinic** | Pokhara | `clinic.meditouch@gmail.com` | NPR 11,999 | [`/meditouch-pokhara?preview=1`](https://nepal-web-studio.vercel.app/meditouch-pokhara?preview=1) | [`/meditouch-pokhara`](https://nepal-web-studio.vercel.app/meditouch-pokhara) |
+| 1 | **Pokhara Boutique Hotel** | Khahare Lakeside, Pokhara | `pokharaboutiquehotel@gmail.com` | NPR 24,999 | [`/pokhara-boutique-hotel?preview=1`](https://atelier-kora-xi.vercel.app/pokhara-boutique-hotel?preview=1) | [`/pokhara-boutique-hotel`](https://atelier-kora-xi.vercel.app/pokhara-boutique-hotel) |
+| 2 | **Boutique Heritage Home** *(Naveen Pradhan)* | Saugal Tole, Patan | `heritagehomenepal@gmail.com` | NPR 22,999 | [`/boutique-heritage-patan?preview=1`](https://atelier-kora-xi.vercel.app/boutique-heritage-patan?preview=1) | [`/boutique-heritage-patan`](https://atelier-kora-xi.vercel.app/boutique-heritage-patan) |
+| 3 | **Hotel Yechu** | Nagarkot Rd, Bhaktapur | `info@hotelyechu.com.np` | NPR 24,999 | [`/hotel-yechu-bhaktapur?preview=1`](https://atelier-kora-xi.vercel.app/hotel-yechu-bhaktapur?preview=1) | [`/hotel-yechu-bhaktapur`](https://atelier-kora-xi.vercel.app/hotel-yechu-bhaktapur) |
+| 4 | **Griha Prabesh Design Studio** *(Ar. Manjil Bista)* | Gwarko, Lalitpur | `grihaprabesh.designs@gmail.com` | NPR 21,999 | [`/griha-prabesh-architects?preview=1`](https://atelier-kora-xi.vercel.app/griha-prabesh-architects?preview=1) | [`/griha-prabesh-architects`](https://atelier-kora-xi.vercel.app/griha-prabesh-architects) |
+| 5 | **Nepal Interiors Pvt. Ltd** | Pepsicola, Kathmandu | `nepalinteriors8848@gmail.com` | NPR 21,999 | [`/nepal-interiors-studio?preview=1`](https://atelier-kora-xi.vercel.app/nepal-interiors-studio?preview=1) | [`/nepal-interiors-studio`](https://atelier-kora-xi.vercel.app/nepal-interiors-studio) |
+| 6 | **Sharvaaya Skin & Hair Clinic** *(Dr. Saujan Subedi)* | Lazimpat, Kathmandu | `sharvaayaskinhair@gmail.com` | NPR 21,999 | [`/sharvaaya-clinic?preview=1`](https://atelier-kora-xi.vercel.app/sharvaaya-clinic?preview=1) | [`/sharvaaya-clinic`](https://atelier-kora-xi.vercel.app/sharvaaya-clinic) |
+| 7 | **Aesthetic Aura Skin & Hair Clinic** *(Dr. Isha Poudel Koirala)* | Sankhamul, Baneshwor | `aestheticauranepal@gmail.com` | NPR 22,999 | [`/aesthetic-aura-clinic?preview=1`](https://atelier-kora-xi.vercel.app/aesthetic-aura-clinic?preview=1) | [`/aesthetic-aura-clinic`](https://atelier-kora-xi.vercel.app/aesthetic-aura-clinic) |
+| 8 | **Nepal Trekking & Expedition Pvt. Ltd.** *(Est. 1993)* | Kwabahal, Thamel | `nepaltrekking@gmail.com` | NPR 26,999 | [`/nepal-trek-expeditions?preview=1`](https://atelier-kora-xi.vercel.app/nepal-trek-expeditions?preview=1) | [`/nepal-trek-expeditions`](https://atelier-kora-xi.vercel.app/nepal-trek-expeditions) |
+| 9 | **Well Nepal Treks & Tours Pvt. Ltd.** *(CEO Mr. Ramesh)* | Bhagwan Bahal, Thamel | `wellnepaltreks@gmail.com` | NPR 26,999 | [`/well-nepal-treks?preview=1`](https://atelier-kora-xi.vercel.app/well-nepal-treks?preview=1) | [`/well-nepal-treks`](https://atelier-kora-xi.vercel.app/well-nepal-treks) |
+| 10 | **All Nepalese Tea & Coffee Center · Tealaya** *(MD Santosh Chandra Kunwar)* | Kupondole / Thamel / Jhamsikhel | `allnepaltea@gmail.com` | NPR 27,999 | [`/tealaya-nepal-export?preview=1`](https://atelier-kora-xi.vercel.app/tealaya-nepal-export?preview=1) | [`/tealaya-nepal-export`](https://atelier-kora-xi.vercel.app/tealaya-nepal-export) |
 
 ---
 
-## 2. 60-Second Closing & Custom Domain Launch Playbook
+## Batch 1 — Nepal Web Studio (8 Prospects · NPR 99,992 Pipeline — Live & Untouched)
 
-When any business owner replies by Gmail or WhatsApp (`+977 9847509025`):
+All 8 Batch-1 preview & clean URLs remain live on `https://nepal-web-studio.vercel.app/<slug>` (`evoke-jhamsikhel`, `apple-dental`, `smile-signature`, `advance-paragliding`, `green-spa-pokhara`, `le-spa-pokhara`, `rosemary-spa`, `meditouch-pokhara`).
 
-1. **Customize any requested details (optional, 2 mins):**
-   - Edit that business's entry in `src/data/businesses.ts` (phone, menu/treatment prices, doctor bio, or hero image in `public/images/`).
-2. **Attach their official domain in Vercel (30 secs):**
-   - Open Vercel Project **`nepal-web-studio` → Settings → Domains** and add their domain (e.g., `evokenepal.com` or `appledentalnepal.com.np`).
-   - Point their domain DNS:
-     - Root `@` `A` record → `76.76.21.21`
-     - `www` `CNAME` record → `cname.vercel-dns.com`
-     - *(For free `.com.np` domains via `register.com.np`, point nameservers to Cloudflare free DNS first, then set the `A` and `CNAME` records above—Vercel provisions HTTPS/SSL automatically.)*
-3. **Bind the domain in your Founder Console (15 secs):**
-   - Open `https://nepal-web-studio.vercel.app/dashboard`
-   - Paste their domain (e.g., `appledentalnepal.com.np`) into that business's **Custom Domain** field and click **Bind**, then set status to **`won`**.
-   - `src/app/page.tsx` reads the incoming `Host` header and **automatically serves ONLY that client's white-label website at `/`** (with zero preview banner and zero studio branding!).
-4. **Collect Payment:**
-   - Send them their live HTTPS link on their own domain and collect the **NPR 9,999 – 14,999** setup fee via **eSewa / Khalti / Fonepay / Bank Transfer**, plus offer the optional **NPR 1,500/month** care & hosting plan.
+---
+
+## 60-Second Custom-Domain Handover Playbook
+
+1. **Add Client Domain in Vercel:** In Vercel → Project **`atelier-kora`** (`prj_hxrkEn6Yu6q0LFZUQ1Ww9PQgtZaP`) → Settings → Domains, add their domain (e.g., `pokharaboutique.com`, `bhhnepal.com`, `grihaprabesh.com.np`, or `tealaya.com.np`).
+2. **Point DNS:** Root `@` `A` record → `76.76.21.21` and `www` `CNAME` → `cname.vercel-dns.com` (Vercel auto-issues HTTPS/SSL).
+3. **Bind in Dashboard:** Open `https://atelier-kora-xi.vercel.app/dashboard`, paste their domain into the **Attach domain** input for that business, and click the gold Globe icon. `src/app/page.tsx` automatically serves **only** their white-label luxury site at `/` with zero preview bar!
+4. **Collect Payment:** Settle the **NPR 21,999 – 27,999** turnkey fee via Corporate Bank Transfer, Fonepay, eSewa, or Khalti + offer the optional **NPR 2,000 – 2,500/month** Managed Cloud & Concierge Care plan.

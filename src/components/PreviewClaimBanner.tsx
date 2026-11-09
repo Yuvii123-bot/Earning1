@@ -20,14 +20,17 @@ const FOUNDER_EMAIL = "imyuvojha@gmail.com";
 export function PreviewClaimBanner({
   business,
   isPreview,
+  isFounder = false,
 }: {
   business: BusinessConfig;
   isPreview: boolean;
+  isFounder?: boolean;
 }) {
   const [dismissed, setDismissed] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
+    if (isFounder) return;
     const key = `tracked_${business.slug}_${isPreview ? "p" : "d"}`;
     if (typeof window !== "undefined" && !sessionStorage.getItem(key)) {
       sessionStorage.setItem(key, "1");
@@ -40,7 +43,7 @@ export function PreviewClaimBanner({
         }),
       }).catch(() => {});
     }
-  }, [business.slug, isPreview]);
+  }, [business.slug, isPreview, isFounder]);
 
   if (!isPreview || dismissed) return null;
 

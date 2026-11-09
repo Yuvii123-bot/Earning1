@@ -1,15 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
 
+const BOT_UA_REGEX =
+  /bot|crawler|spider|headless|facebookexternalhit|whatsapp|slackbot|preview/i;
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { business_slug, source } = body;
-    if (!business_slug) {
-      return NextResponse.json({ ok: false }, { status: 400 });
+    if (!business_slug || source === "founder") {
+      return NextResponse.json({ ok: true, skipped: true });
     }
 
     const ua = req.headers.get("user-agent") || "unknown";
+    if (BOT_UA_REGEX.test(ua)) {
+      return NextResponse.json({ ok: true, skipped: "bot" });
+    }
+
     const supabase = getSupabaseAdmin();
 
     await supabase.from("earning1_page_views").insert({

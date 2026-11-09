@@ -97,7 +97,9 @@ export default async function BusinessSitePage({
 }) {
   const { slug } = await params;
   const query = await searchParams;
-  const isPreview = query.preview === "1" || query.preview === "true";
+  const isFounder = query.founder === "1" || query.founder === "true";
+  const isPreview =
+    isFounder || query.preview === "1" || query.preview === "true";
 
   // 1. Check Batch-2 Atelier Kora Luxury Builds first
   const koraBusiness = getKoraBusinessBySlug(slug);
@@ -136,7 +138,11 @@ export default async function BusinessSitePage({
             isPreview={isPreview}
           />
         )}
-        <KoraPreviewConcierge business={koraBusiness} isPreview={isPreview} />
+        <KoraPreviewConcierge
+          business={koraBusiness}
+          isPreview={isPreview}
+          isFounder={isFounder}
+        />
       </>
     );
   }
@@ -165,7 +171,11 @@ export default async function BusinessSitePage({
         business.template === "dermatology") && (
         <SpaAndSkinSite business={business} isPreview={isPreview} />
       )}
-      <PreviewClaimBanner business={business} isPreview={isPreview} />
+      <PreviewClaimBanner
+        business={business}
+        isPreview={isPreview}
+        isFounder={isFounder}
+      />
     </>
   );
 }

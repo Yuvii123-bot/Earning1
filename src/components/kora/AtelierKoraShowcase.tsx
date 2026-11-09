@@ -214,7 +214,7 @@ export function AtelierKoraShowcase() {
             {visibleBuilds.map((biz) => (
               <Link
                 key={biz.slug}
-                href={`/${biz.slug}?preview=1`}
+                href={`/${biz.slug}?founder=1`}
                 className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-[#C5A059]/60"
               >
                 <div className="relative h-56 overflow-hidden">

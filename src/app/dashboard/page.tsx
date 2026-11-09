@@ -253,6 +253,7 @@ export default function FounderDashboardPage() {
           {filteredLeads.map((lead) => {
             const base = getBaseUrlForLead(lead);
             const previewUrl = `${base}/${lead.slug}?preview=1`;
+            const founderInspectUrl = `${base}/${lead.slug}?founder=1`;
             const cleanUrl = `${base}/${lead.slug}`;
             const whatsappFollowUp = lead.whatsapp
               ? `https://wa.me/${lead.whatsapp}?text=${encodeURIComponent(
@@ -318,13 +319,13 @@ export default function FounderDashboardPage() {
 
                     <div className="flex flex-wrap gap-2">
                       <a
-                        href={previewUrl}
+                        href={founderInspectUrl}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-1.5 rounded-xl bg-white/10 px-3 py-2 text-xs font-semibold text-white hover:bg-white/15"
                       >
                         <Sparkles className="h-3.5 w-3.5 text-[#E2C282]" />
-                        Owner Preview
+                        Founder View (No Count)
                         <ExternalLink className="h-3 w-3" />
                       </a>
 

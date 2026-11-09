@@ -1,11 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import { BUSINESSES } from "@/data/businesses";
+import { KORA_BUSINESSES } from "@/data/kora-businesses";
 
 export const dynamic = "force-dynamic";
 
 function fallbackBusinesses() {
-  return BUSINESSES.map((b) => ({
+  const koraRows = KORA_BUSINESSES.map((b) => ({
+    slug: b.slug,
+    business_name: b.name,
+    city: b.city,
+    neighborhood: b.neighborhood,
+    category: b.sectorLabel,
+    email: b.email,
+    phone: b.phoneDisplay,
+    whatsapp: b.whatsappDigits || null,
+    current_website: b.currentWebsiteUrl,
+    audit_issue: b.currentWebsiteFlaw,
+    pitch_price_npr: b.pitchPriceNpr,
+    monthly_care_npr: b.monthlyCareNpr,
+    custom_domain: null,
+    outreach_status: "emailed",
+    gmail_message_id: null,
+    gmail_thread_id: null,
+    emailed_at: null,
+    view_count: 0,
+    owner_view_count: 0,
+    last_viewed_at: null,
+    cohort: "kora",
+  }));
+
+  const batch1Rows = BUSINESSES.map((b) => ({
     slug: b.slug,
     business_name: b.name,
     city: b.city,
@@ -26,7 +51,10 @@ function fallbackBusinesses() {
     view_count: 0,
     owner_view_count: 0,
     last_viewed_at: null,
+    cohort: "batch1",
   }));
+
+  return [...koraRows, ...batch1Rows];
 }
 
 export async function GET() {
@@ -37,8 +65,8 @@ export async function GET() {
         supabase
           .from("earning1_businesses")
           .select("*")
-          .order("city", { ascending: true })
-          .order("business_name", { ascending: true }),
+          .order("cohort", { ascending: false })
+          .order("pitch_price_npr", { ascending: false }),
         supabase
           .from("earning1_inquiries")
           .select("*")

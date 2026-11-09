@@ -2,14 +2,56 @@ import React from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { BUSINESSES, getBusinessBySlug } from "@/data/businesses";
+import {
+  KORA_BUSINESSES,
+  getKoraBusinessBySlug,
+  type KoraBusinessConfig,
+} from "@/data/kora-businesses";
 import { EvokeBistroSite } from "@/components/sites/EvokeBistroSite";
 import { DentalClinicSite } from "@/components/sites/DentalClinicSite";
 import { ParaglidingSite } from "@/components/sites/ParaglidingSite";
 import { SpaAndSkinSite } from "@/components/sites/SpaAndSkinSite";
 import { PreviewClaimBanner } from "@/components/PreviewClaimBanner";
+import { KoraPreviewConcierge } from "@/components/kora/KoraPreviewConcierge";
+import { LuxuryStayEngine } from "@/components/kora/LuxuryStayEngine";
+import { ArchitectureAtelierEngine } from "@/components/kora/ArchitectureAtelierEngine";
+import { ClinicalAestheticEngine } from "@/components/kora/ClinicalAestheticEngine";
+import { HimalayanExpeditionEngine } from "@/components/kora/HimalayanExpeditionEngine";
+import { ArtisanalExportEngine } from "@/components/kora/ArtisanalExportEngine";
 
 export function generateStaticParams() {
-  return BUSINESSES.map((b) => ({ slug: b.slug }));
+  return [
+    ...KORA_BUSINESSES.map((b) => ({ slug: b.slug })),
+    ...BUSINESSES.map((b) => ({ slug: b.slug })),
+  ];
+}
+
+function buildKoraJsonLd(biz: KoraBusinessConfig) {
+  const schemaType =
+    biz.engine === "kora-stay"
+      ? "Hotel"
+      : biz.engine === "kora-clinical"
+      ? "MedicalClinic"
+      : biz.engine === "kora-expedition"
+      ? "TravelAgency"
+      : biz.engine === "kora-architecture"
+      ? "ProfessionalService"
+      : "Organization";
+
+  return {
+    "@context": "https://schema.org",
+    "@type": schemaType,
+    name: biz.name,
+    description: biz.editorialIntro,
+    telephone: biz.phoneDisplay,
+    email: biz.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: biz.fullAddress,
+      addressLocality: biz.city,
+      addressCountry: "NP",
+    },
+  };
 }
 
 export async function generateMetadata({
@@ -18,6 +60,20 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+
+  const koraBiz = getKoraBusinessBySlug(slug);
+  if (koraBiz) {
+    return {
+      title: `${koraBiz.name} — ${koraBiz.sectorLabel} | ${koraBiz.city}`,
+      description: `${koraBiz.tagline} ${koraBiz.fullAddress} · ${koraBiz.phoneDisplay}`,
+      openGraph: {
+        title: `${koraBiz.name} | ${koraBiz.neighborhood}, ${koraBiz.city}`,
+        description: koraBiz.tagline,
+        images: [koraBiz.heroImage],
+      },
+    };
+  }
+
   const biz = getBusinessBySlug(slug);
   if (!biz) return { title: "Site Not Found" };
 
@@ -41,13 +97,55 @@ export default async function BusinessSitePage({
 }) {
   const { slug } = await params;
   const query = await searchParams;
-  const business = getBusinessBySlug(slug);
+  const isPreview = query.preview === "1" || query.preview === "true";
 
+  // 1. Check Batch-2 Atelier Kora Luxury Builds first
+  const koraBusiness = getKoraBusinessBySlug(slug);
+  if (koraBusiness) {
+    const jsonLd = buildKoraJsonLd(koraBusiness);
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {koraBusiness.engine === "kora-stay" && (
+          <LuxuryStayEngine business={koraBusiness} isPreview={isPreview} />
+        )}
+        {koraBusiness.engine === "kora-architecture" && (
+          <ArchitectureAtelierEngine
+            business={koraBusiness}
+            isPreview={isPreview}
+          />
+        )}
+        {koraBusiness.engine === "kora-clinical" && (
+          <ClinicalAestheticEngine
+            business={koraBusiness}
+            isPreview={isPreview}
+          />
+        )}
+        {koraBusiness.engine === "kora-expedition" && (
+          <HimalayanExpeditionEngine
+            business={koraBusiness}
+            isPreview={isPreview}
+          />
+        )}
+        {koraBusiness.engine === "kora-export" && (
+          <ArtisanalExportEngine
+            business={koraBusiness}
+            isPreview={isPreview}
+          />
+        )}
+        <KoraPreviewConcierge business={koraBusiness} isPreview={isPreview} />
+      </>
+    );
+  }
+
+  // 2. Fallback to Batch-1 Builds
+  const business = getBusinessBySlug(slug);
   if (!business) {
     notFound();
   }
-
-  const isPreview = query.preview === "1" || query.preview === "true";
 
   return (
     <>

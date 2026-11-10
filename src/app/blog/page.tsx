@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SiteNav } from "@/components/SiteNav";
-import { RevealOnScroll } from "@/components/Animations";
+import { RevealOnScroll, GlowCard, StaggerReveal, ScrollProgress, Tilt3D } from "@/components/Animations";
 import { BLOG_POSTS } from "@/data/blog-posts";
 
 export const metadata: Metadata = {
@@ -27,6 +27,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-[#030712] text-white">
+      <ScrollProgress />
       <SiteNav />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
@@ -37,7 +38,7 @@ export default function BlogPage() {
               <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">Blog & Guides</span>
               <h1 className="mt-3 text-4xl font-bold tracking-tight md:text-6xl">
                 Expert Guides for{" "}
-                <span className="bg-gradient-to-r from-[#c9a84c] to-[#f0d78c] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#c9a84c] to-[#f0d78c] bg-clip-text text-transparent animate-gradient">
                   Nepal Businesses
                 </span>
               </h1>
@@ -47,30 +48,29 @@ export default function BlogPage() {
             </div>
           </RevealOnScroll>
 
-          <div className="mt-16 grid gap-8 md:grid-cols-2">
-            {BLOG_POSTS.map((post, i) => (
-              <RevealOnScroll key={post.slug} delay={i * 80}>
-                <a
-                  href={`/blog/${post.slug}`}
-                  className="group block h-full rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition hover:border-[#c9a84c]/20 hover:bg-white/[0.04]"
-                >
-                  <div className="mb-3 flex items-center gap-3">
-                    <span className="rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/5 px-3 py-1 text-xs text-[#c9a84c]">
-                      {post.category}
-                    </span>
-                    <span className="text-xs text-gray-500">{post.readTime} read</span>
-                  </div>
-                  <h2 className="mb-2 text-xl font-bold leading-tight transition group-hover:text-[#c9a84c]">
-                    {post.title}
-                  </h2>
-                  <p className="text-sm leading-relaxed text-gray-400">{post.excerpt}</p>
-                  <div className="mt-4 text-sm font-semibold text-[#c9a84c] opacity-0 transition group-hover:opacity-100">
-                    Read Article →
-                  </div>
-                </a>
-              </RevealOnScroll>
+          <StaggerReveal className="mt-16 grid gap-8 md:grid-cols-2" staggerMs={80}>
+            {BLOG_POSTS.map((post) => (
+              <Tilt3D key={post.slug} maxTilt={3}>
+                <GlowCard className="h-full rounded-2xl border border-white/5 bg-white/[0.02] transition-all duration-300 hover:border-[#c9a84c]/20 hover-lift">
+                  <a href={`/blog/${post.slug}`} className="group block p-6">
+                    <div className="mb-3 flex items-center gap-3">
+                      <span className="rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/5 px-3 py-1 text-xs text-[#c9a84c]">
+                        {post.category}
+                      </span>
+                      <span className="text-xs text-gray-500">{post.readTime} read</span>
+                    </div>
+                    <h2 className="mb-2 text-xl font-bold leading-tight transition group-hover:text-[#c9a84c]">
+                      {post.title}
+                    </h2>
+                    <p className="text-sm leading-relaxed text-gray-400">{post.excerpt}</p>
+                    <div className="mt-4 text-sm font-semibold text-[#c9a84c] opacity-0 transition group-hover:opacity-100">
+                      Read Article →
+                    </div>
+                  </a>
+                </GlowCard>
+              </Tilt3D>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 

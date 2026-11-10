@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SiteNav } from "@/components/SiteNav";
+import { RevealOnScroll, GlowCard, StaggerReveal, ScrollProgress } from "@/components/Animations";
 
 export const metadata: Metadata = {
   title: "Contact SSJS Web Agency — Get a Free Website Audit | Nepal",
@@ -36,32 +38,13 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-[#030712] text-white">
+      <ScrollProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Nav */}
-      <nav className="border-b border-white/5 bg-[#030712]/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <a href="/" className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-bold tracking-tight text-white">
-                SSJS
-              </span>
-              <span className="text-xs font-medium tracking-[0.2em] text-[#c9a84c] uppercase">
-                Web Agency
-              </span>
-            </div>
-          </a>
-          <a
-            href="/"
-            className="text-sm text-gray-400 transition hover:text-white"
-          >
-            ← Back to Home
-          </a>
-        </div>
-      </nav>
+      <SiteNav brand={true} />
 
       <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="mb-16 text-center">

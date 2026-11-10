@@ -124,8 +124,9 @@ export function SSJSAgencyHome() {
     name: "SSJS Web Agency",
     description:
       "Premium web design agency in Nepal crafting custom websites, booking systems, and digital solutions for hotels, clinics, tour operators, and businesses across Kathmandu, Pokhara, and beyond.",
-    url: "https://atelier-kora-xi.vercel.app",
+    url: "https://ssjs-web-agency.vercel.app",
     email: "hello@yuvrajojha.com.np",
+    telephone: "+977-9847509025",
     founder: { "@type": "Person", name: "YuvRajOjha" },
     address: {
       "@type": "PostalAddress",
@@ -135,6 +136,32 @@ export function SSJSAgencyHome() {
     },
     areaServed: "Nepal",
     priceRange: "NPR 10,999 – 14,999",
+    sameAs: [],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Web Design Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Web Design" }, price: "10999", priceCurrency: "NPR" },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Booking & Reservation Systems" }, price: "12999", priceCurrency: "NPR" },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO & Google Visibility" }, price: "10999", priceCurrency: "NPR" },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Maintenance" }, price: "1500", priceCurrency: "NPR" },
+      ],
+    },
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      { "@type": "Question", name: "How much does a website cost?", acceptedAnswer: { "@type": "Answer", text: "Our websites start at NPR 10,999 for a starter site and go up to NPR 14,999 for premium packages with booking engines and multi-currency support. Optional monthly maintenance starts at NPR 1,500/month. You only pay after approving the finished website." } },
+      { "@type": "Question", name: "Do I need to pay upfront?", acceptedAnswer: { "@type": "Answer", text: "No. We build your complete website first — custom-designed, mobile-responsive, and loaded with interactive features. You review it on your phone. Only when you're happy do we connect your domain and collect payment. Zero upfront risk." } },
+      { "@type": "Question", name: "How long does it take to build a website?", acceptedAnswer: { "@type": "Answer", text: "Most websites are completed within 3-7 business days. Once you approve the design, we connect your domain and go live within 24 hours. Simple sites can be done even faster." } },
+      { "@type": "Question", name: "Will my website work on mobile phones?", acceptedAnswer: { "@type": "Answer", text: "Absolutely. 87% of Nepal's internet users browse on smartphones. We design mobile-first — your website will look perfect on every device, from budget Android phones to desktop monitors." } },
+      { "@type": "Question", name: "Can you help me get on Google?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every website includes technical SEO (Schema.org structured data, sitemaps, meta tags), local SEO optimization, and Google Rich Results markup so your business appears prominently in search results." } },
+      { "@type": "Question", name: "Do I own the website after it's built?", acceptedAnswer: { "@type": "Answer", text: "Yes — 100%. You own the code, the domain, and all the data. We provide full handover with no lock-in. You can self-host or switch to any other provider anytime." } },
+      { "@type": "Question", name: "What if I already have a website?", acceptedAnswer: { "@type": "Answer", text: "We can redesign your existing website with a modern, faster, mobile-optimized version while keeping your domain and improving your SEO." } },
+      { "@type": "Question", name: "Do you build booking systems for hotels and tour operators?", acceptedAnswer: { "@type": "Answer", text: "Yes — interactive booking engines are our specialty. We build multi-currency reservation systems with direct WhatsApp routing, so bookings go straight to your phone with zero OTA commission." } },
+    ],
   };
 
   return (
@@ -142,6 +169,10 @@ export function SSJSAgencyHome() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* Navigation */}
@@ -166,13 +197,13 @@ export function SSJSAgencyHome() {
           </div>
           <div className="hidden items-center gap-8 md:flex">
             <a
-              href="#services"
+              href="/services"
               className="text-sm text-gray-400 transition hover:text-white"
             >
               Services
             </a>
             <a
-              href="#portfolio"
+              href="/portfolio"
               className="text-sm text-gray-400 transition hover:text-white"
             >
               Portfolio
@@ -190,7 +221,7 @@ export function SSJSAgencyHome() {
               Pricing
             </a>
             <a
-              href="#contact"
+              href="/contact"
               className="rounded-full bg-[#c9a84c] px-5 py-2 text-sm font-semibold text-black transition hover:bg-[#d4b85c]"
             >
               Get Started
@@ -478,6 +509,69 @@ export function SSJSAgencyHome() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="mb-12 text-center">
+            <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
+              Common Questions
+            </span>
+            <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {[
+              {
+                q: "How much does a website cost?",
+                a: "Our websites start at NPR 10,999 for a starter site and go up to NPR 14,999 for premium packages with booking engines and multi-currency support. Optional monthly maintenance starts at NPR 1,500/month. You only pay after approving the finished website.",
+              },
+              {
+                q: "Do I need to pay upfront?",
+                a: "No. We build your complete website first — custom-designed, mobile-responsive, and loaded with interactive features. You review it on your phone. Only when you're happy do we connect your domain and collect payment. Zero upfront risk.",
+              },
+              {
+                q: "How long does it take to build a website?",
+                a: "Most websites are completed within 3-7 business days. Once you approve the design, we connect your domain and go live within 24 hours. Simple sites can be done even faster.",
+              },
+              {
+                q: "Will my website work on mobile phones?",
+                a: "Absolutely. 87% of Nepal's internet users browse on smartphones. We design mobile-first — your website will look perfect on every device, from budget Android phones to desktop monitors.",
+              },
+              {
+                q: "Can you help me get on Google?",
+                a: "Yes. Every website includes technical SEO (Schema.org structured data, sitemaps, meta tags), local SEO optimization, and Google Rich Results markup so your business appears prominently in search results.",
+              },
+              {
+                q: "Do I own the website after it's built?",
+                a: "Yes — 100%. You own the code, the domain, and all the data. We provide full handover with no lock-in. You can self-host or switch to any other provider anytime. Optional monthly maintenance is always cancel-anytime.",
+              },
+              {
+                q: "What if I already have a website?",
+                a: "We can redesign your existing website with a modern, faster, mobile-optimized version while keeping your domain and improving your SEO. Many of our clients started with outdated WordPress sites or broken templates.",
+              },
+              {
+                q: "Do you build booking systems for hotels and tour operators?",
+                a: "Yes — interactive booking engines are our specialty. We build multi-currency reservation systems with direct WhatsApp routing, so bookings go straight to your phone with zero OTA commission (no Booking.com or Agoda fees).",
+              },
+            ].map((faq) => (
+              <details
+                key={faq.q}
+                className="group rounded-xl border border-white/5 bg-white/[0.02] transition hover:border-[#c9a84c]/10"
+              >
+                <summary className="flex cursor-pointer items-center justify-between p-5 text-left font-semibold">
+                  {faq.q}
+                  <span className="ml-4 text-[#c9a84c] transition group-open:rotate-45">+</span>
+                </summary>
+                <div className="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>

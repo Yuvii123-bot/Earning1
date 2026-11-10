@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SiteNav } from "@/components/SiteNav";
+import { RevealOnScroll, GlowCard, StaggerReveal, ScrollProgress, Tilt3D } from "@/components/Animations";
 
 export const metadata: Metadata = {
   title: "Our Services — Web Design, Booking Systems, SEO & Maintenance | SSJS",
@@ -57,79 +59,71 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-[#030712] text-white">
+      <ScrollProgress />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav className="border-b border-white/5 bg-[#030712]/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <a href="/" className="flex items-center gap-2">
-            <span className="text-lg font-bold text-white">SSJS</span>
-            <span className="text-xs font-medium tracking-[0.2em] text-[#c9a84c] uppercase">Web Agency</span>
-          </a>
-          <div className="flex items-center gap-6">
-            <a href="/portfolio" className="text-sm text-gray-400 transition hover:text-white">Portfolio</a>
-            <a href="/contact" className="rounded-full bg-[#c9a84c] px-5 py-2 text-sm font-semibold text-black">Get Quote</a>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
-      <section className="relative py-24">
+      <section className="relative py-24 pt-32">
         <div className="absolute top-0 left-1/2 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[#c9a84c]/5 blur-[150px]" />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
-            Services That{" "}
-            <span className="bg-gradient-to-r from-[#c9a84c] to-[#f0d78c] bg-clip-text text-transparent">
-              Grow Your Business
-            </span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
-            From custom web design to booking systems, SEO, and ongoing maintenance — everything your business needs to thrive online, all under one roof.
-          </p>
+          <RevealOnScroll>
+            <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+              Services That{" "}
+              <span className="bg-gradient-to-r from-[#c9a84c] to-[#f0d78c] bg-clip-text text-transparent animate-gradient">
+                Grow Your Business
+              </span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+              From custom web design to booking systems, SEO, and ongoing maintenance — everything your business needs to thrive online, all under one roof.
+            </p>
+          </RevealOnScroll>
         </div>
       </section>
 
       <section className="py-12">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="grid gap-8">
+          <StaggerReveal className="grid gap-8" staggerMs={120}>
             {SERVICES.map((s) => (
-              <a
-                key={s.title}
-                href={s.href}
-                className="group rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition hover:border-[#c9a84c]/20 hover:bg-white/[0.04]"
-              >
-                <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                  <div className="flex-1">
-                    <div className="mb-2 flex items-center gap-3">
-                      <span className="text-3xl">{s.icon}</span>
-                      <h2 className="text-2xl font-bold">{s.title}</h2>
+              <GlowCard key={s.title} className="rounded-2xl border border-white/5 bg-white/[0.02] transition-all duration-300 hover:border-[#c9a84c]/20 hover-lift">
+                <a href={s.href} className="group block p-8">
+                  <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                    <div className="flex-1">
+                      <div className="mb-2 flex items-center gap-3">
+                        <span className="text-3xl transition-transform duration-300 group-hover:scale-110">{s.icon}</span>
+                        <h2 className="text-2xl font-bold">{s.title}</h2>
+                      </div>
+                      <p className="mb-4 text-gray-400">{s.desc}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {s.tags.map((tag) => (
+                          <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-300 transition hover:border-[#c9a84c]/20">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <p className="mb-4 text-gray-400">{s.desc}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {s.tags.map((tag) => (
-                        <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-300">
-                          {tag}
-                        </span>
-                      ))}
+                    <div className="flex flex-col items-end gap-2">
+                      <span className="text-lg font-bold text-[#c9a84c]">{s.price}</span>
+                      <span className="text-sm text-gray-500 transition group-hover:text-[#c9a84c]">Learn more →</span>
                     </div>
                   </div>
-                  <div className="flex flex-col items-end gap-2">
-                    <span className="text-lg font-bold text-[#c9a84c]">{s.price}</span>
-                    <span className="text-sm text-gray-500 transition group-hover:text-[#c9a84c]">Learn more →</span>
-                  </div>
-                </div>
-              </a>
+                </a>
+              </GlowCard>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 
       <section className="py-20">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-3xl font-bold">Not Sure What You Need?</h2>
-          <p className="mt-4 text-gray-400">
-            Tell us about your business and we&apos;ll recommend the right solution — no pressure, no obligation.
-          </p>
-          <a href="/contact" className="mt-8 inline-block rounded-full bg-[#c9a84c] px-8 py-3.5 font-bold text-black transition hover:bg-[#d4b85c]">
-            Get Free Consultation →
-          </a>
+          <RevealOnScroll>
+            <h2 className="text-3xl font-bold">Not Sure What You Need?</h2>
+            <p className="mt-4 text-gray-400">
+              Tell us about your business and we&apos;ll recommend the right solution — no pressure, no obligation.
+            </p>
+            <a href="/contact" className="mt-8 inline-block rounded-full bg-[#c9a84c] px-8 py-3.5 font-bold text-black transition hover:bg-[#d4b85c] hover:shadow-lg hover:shadow-[#c9a84c]/20">
+              Get Free Consultation →
+            </a>
+          </RevealOnScroll>
         </div>
       </section>
 

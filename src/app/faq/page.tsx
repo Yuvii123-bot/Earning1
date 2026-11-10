@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SiteNav } from "@/components/SiteNav";
-import { RevealOnScroll } from "@/components/Animations";
+import { RevealOnScroll, GlowCard, StaggerReveal, ScrollProgress } from "@/components/Animations";
 
 export const metadata: Metadata = {
   title: "FAQ — Web Design Questions Answered | SSJS Web Agency Nepal",
@@ -47,6 +47,7 @@ const faqJsonLd = {
 export default function FAQPage() {
   return (
     <div className="min-h-screen bg-[#030712] text-white">
+      <ScrollProgress />
       <SiteNav />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
@@ -70,19 +71,19 @@ export default function FAQPage() {
                 <RevealOnScroll>
                   <h2 className="mb-6 text-2xl font-bold text-[#c9a84c]">{category.category}</h2>
                 </RevealOnScroll>
-                <div className="space-y-3">
-                  {category.items.map((faq, i) => (
-                    <RevealOnScroll key={faq.q} delay={i * 50}>
-                      <details className="group rounded-xl border border-white/5 bg-white/[0.02] transition hover:border-[#c9a84c]/10">
-                        <summary className="flex cursor-pointer items-center justify-between p-5 text-left font-semibold">
-                          {faq.q}
-                          <span className="ml-4 shrink-0 text-xl text-[#c9a84c] transition group-open:rotate-45">+</span>
-                        </summary>
-                        <div className="px-5 pb-5 text-sm leading-relaxed text-gray-400">{faq.a}</div>
-                      </details>
-                    </RevealOnScroll>
-                  ))}
-                </div>
+                  <StaggerReveal className="space-y-3" staggerMs={50}>
+                    {category.items.map((faq) => (
+                      <GlowCard key={faq.q} className="rounded-xl border border-white/5 bg-white/[0.02] transition-all duration-200 hover:border-[#c9a84c]/10">
+                        <details className="group">
+                          <summary className="flex cursor-pointer items-center justify-between p-5 text-left font-semibold">
+                            {faq.q}
+                            <span className="ml-4 shrink-0 text-xl text-[#c9a84c] transition group-open:rotate-45">+</span>
+                          </summary>
+                          <div className="px-5 pb-5 text-sm leading-relaxed text-gray-400">{faq.a}</div>
+                        </details>
+                      </GlowCard>
+                    ))}
+                  </StaggerReveal>
               </div>
             ))}
           </div>

@@ -2,7 +2,17 @@ import Image from "next/image";
 import { BUSINESSES } from "@/data/businesses";
 import { KORA_BUSINESSES } from "@/data/kora-businesses";
 import { SiteNav } from "@/components/SiteNav";
-import { RevealOnScroll, AnimatedCounter, FloatingOrbs } from "@/components/Animations";
+import {
+  RevealOnScroll,
+  AnimatedCounter,
+  FloatingOrbs,
+  GlowCard,
+  StaggerReveal,
+  TypewriterText,
+  MagneticButton,
+  ScrollProgress,
+  Tilt3D,
+} from "@/components/Animations";
 
 const PORTFOLIO = [
   ...KORA_BUSINESSES.map((b) => ({
@@ -168,6 +178,7 @@ export function SSJSAgencyHome() {
 
   return (
     <div className="min-h-screen bg-[#030712] text-white">
+      <ScrollProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -186,53 +197,71 @@ export function SSJSAgencyHome() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#c9a84c]/5 via-transparent to-transparent" />
         <div className="absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a84c]/5 blur-[150px]" />
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/5 px-4 py-1.5">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-[#c9a84c]" />
-            <span className="text-xs font-medium tracking-wider text-[#c9a84c] uppercase">
-              Nepal&apos;s Premium Web Agency
-            </span>
-          </div>
+          <RevealOnScroll>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/5 px-4 py-1.5 animate-fade-in-up">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[#c9a84c]" />
+              <span className="text-xs font-medium tracking-wider text-[#c9a84c] uppercase">
+                Nepal&apos;s Premium Web Agency
+              </span>
+            </div>
+          </RevealOnScroll>
+
           <h1 className="mb-6 text-5xl leading-tight font-extrabold tracking-tight md:text-7xl md:leading-tight">
-            We Build Websites That{" "}
-            <span className="bg-gradient-to-r from-[#c9a84c] to-[#f0d78c] bg-clip-text text-transparent">
-              Generate Revenue
-            </span>
+            <RevealOnScroll delay={100}>
+              <span className="block">We Build Websites That</span>
+            </RevealOnScroll>
+            <RevealOnScroll delay={300}>
+              <TypewriterText
+                text="Generate Revenue"
+                className="bg-gradient-to-r from-[#c9a84c] to-[#f0d78c] bg-clip-text text-transparent"
+                speed={80}
+              />
+            </RevealOnScroll>
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-gray-400 md:text-xl">
-            Custom websites, interactive booking systems, and digital solutions
-            for Nepal&apos;s most ambitious businesses. From Kathmandu to
-            Pokhara — we engineer your digital growth.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="#portfolio"
-              className="rounded-full bg-[#c9a84c] px-8 py-3.5 text-base font-bold text-black transition hover:bg-[#d4b85c] hover:shadow-lg hover:shadow-[#c9a84c]/20"
-            >
-              View Our Work
-            </a>
-            <a
-              href="https://wa.me/9779847509025?text=Hello%20SSJS%20Web%20Agency!%20I%27d%20like%20to%20discuss%20a%20website%20project."
-              className="rounded-full border border-white/10 px-8 py-3.5 text-base font-semibold text-white transition hover:border-[#c9a84c]/50 hover:bg-white/5"
-            >
-              WhatsApp Us →
-            </a>
-          </div>
-          <div className="mt-16 grid grid-cols-3 gap-8 border-t border-white/5 pt-10">
-            <div>
-              <div className="text-3xl font-bold text-[#c9a84c]">
-                <AnimatedCounter end={22} suffix="+" />
+
+          <RevealOnScroll delay={500}>
+            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-gray-400 md:text-xl">
+              Custom websites, interactive booking systems, and digital solutions
+              for Nepal&apos;s most ambitious businesses. From Kathmandu to
+              Pokhara — we engineer your digital growth.
+            </p>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={700}>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <MagneticButton
+                href="#portfolio"
+                className="rounded-full bg-[#c9a84c] px-8 py-3.5 text-base font-bold text-black transition hover:bg-[#d4b85c] hover:shadow-lg hover:shadow-[#c9a84c]/20"
+              >
+                View Our Work
+              </MagneticButton>
+              <MagneticButton
+                href="https://wa.me/9779847509025?text=Hello%20SSJS%20Web%20Agency!%20I%27d%20like%20to%20discuss%20a%20website%20project."
+                className="rounded-full border border-white/10 px-8 py-3.5 text-base font-semibold text-white transition hover:border-[#c9a84c]/50 hover:bg-white/5"
+              >
+                WhatsApp Us →
+              </MagneticButton>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={900}>
+            <div className="mt-16 grid grid-cols-3 gap-8 border-t border-white/5 pt-10">
+              <div className="hover-scale">
+                <div className="text-3xl font-bold text-[#c9a84c]">
+                  <AnimatedCounter end={22} suffix="+" />
+                </div>
+                <div className="text-sm text-gray-500">Websites Built</div>
               </div>
-              <div className="text-sm text-gray-500">Websites Built</div>
+              <div className="hover-scale">
+                <div className="text-3xl font-bold text-[#c9a84c]">24h</div>
+                <div className="text-sm text-gray-500">Domain Handover</div>
+              </div>
+              <div className="hover-scale">
+                <div className="text-3xl font-bold text-[#c9a84c]">0%</div>
+                <div className="text-sm text-gray-500">OTA Commission</div>
+              </div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-[#c9a84c]">24h</div>
-              <div className="text-sm text-gray-500">Domain Handover</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#c9a84c]">0%</div>
-              <div className="text-sm text-gray-500">OTA Commission</div>
-            </div>
-          </div>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -253,20 +282,19 @@ export function SSJSAgencyHome() {
               </p>
             </div>
           </RevealOnScroll>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+          <StaggerReveal className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" staggerMs={100}>
             {SERVICES.map((s) => (
-              <div
+              <GlowCard
                 key={s.title}
-                className="group rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition hover:border-[#c9a84c]/20 hover:bg-white/[0.04]"
+                className="rounded-2xl border border-white/5 bg-white/[0.02] p-8 transition-all duration-300 hover:border-[#c9a84c]/20 hover-lift"
               >
-                <div className="mb-4 text-3xl">{s.icon}</div>
+                <div className="mb-4 text-3xl transition-transform duration-300 group-hover:scale-110">{s.icon}</div>
                 <h3 className="mb-2 text-xl font-bold">{s.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-400">
-                  {s.desc}
-                </p>
-              </div>
+                <p className="text-sm leading-relaxed text-gray-400">{s.desc}</p>
+              </GlowCard>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 
@@ -287,33 +315,36 @@ export function SSJSAgencyHome() {
               </p>
             </div>
           </RevealOnScroll>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+          <StaggerReveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerMs={80}>
             {PORTFOLIO.map((p) => (
-              <a
+              <Tilt3D
                 key={p.slug}
-                href={`/${p.slug}`}
-                className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] transition hover:border-[#c9a84c]/30 hover:shadow-xl hover:shadow-[#c9a84c]/5"
+                className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] transition-all duration-300 hover:border-[#c9a84c]/30 hover:shadow-xl hover:shadow-[#c9a84c]/5"
+                maxTilt={3}
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/30 to-transparent" />
-                </div>
-                <div className="absolute right-0 bottom-0 left-0 p-5">
-                  <div className="mb-1 text-xs font-medium text-[#c9a84c]">
-                    {p.sector} · {p.city}
+                <a href={`/${p.slug}`} className="block">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/30 to-transparent" />
                   </div>
-                  <h3 className="text-lg font-bold text-white">{p.name}</h3>
-                  <div className="mt-2 flex items-center gap-1 text-xs text-gray-400 opacity-0 transition group-hover:opacity-100">
-                    View Live Preview →
+                  <div className="absolute right-0 bottom-0 left-0 p-5">
+                    <div className="mb-1 text-xs font-medium text-[#c9a84c]">
+                      {p.sector} · {p.city}
+                    </div>
+                    <h3 className="text-lg font-bold text-white">{p.name}</h3>
+                    <div className="mt-2 flex items-center gap-1 text-xs text-gray-400 opacity-0 transition group-hover:opacity-100">
+                      View Live Preview →
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </Tilt3D>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 
@@ -334,19 +365,18 @@ export function SSJSAgencyHome() {
               </p>
             </div>
           </RevealOnScroll>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+
+          <StaggerReveal className="grid gap-8 md:grid-cols-2 lg:grid-cols-4" staggerMs={150}>
             {PROCESS.map((p) => (
-              <div key={p.step} className="relative">
-                <div className="mb-4 text-5xl font-black text-[#c9a84c]/20">
+              <div key={p.step} className="relative hover-lift">
+                <div className="mb-4 text-5xl font-black text-[#c9a84c]/20 transition-colors duration-300 group-hover:text-[#c9a84c]/40">
                   {p.step}
                 </div>
                 <h3 className="mb-2 text-xl font-bold">{p.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-400">
-                  {p.desc}
-                </p>
+                <p className="text-sm leading-relaxed text-gray-400">{p.desc}</p>
               </div>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 
@@ -367,18 +397,19 @@ export function SSJSAgencyHome() {
               </p>
             </div>
           </RevealOnScroll>
-          <div className="grid gap-8 md:grid-cols-3">
+
+          <StaggerReveal className="grid gap-8 md:grid-cols-3" staggerMs={150}>
             {PRICING.map((tier) => (
-              <div
+              <GlowCard
                 key={tier.name}
-                className={`relative rounded-2xl border p-8 transition ${
+                className={`relative rounded-2xl border p-8 transition-all duration-300 hover-lift ${
                   tier.popular
                     ? "border-[#c9a84c]/50 bg-[#c9a84c]/5 shadow-xl shadow-[#c9a84c]/5"
                     : "border-white/5 bg-white/[0.02] hover:border-white/10"
                 }`}
               >
                 {tier.popular && (
-                  <div className="absolute -top-3 right-6 rounded-full bg-[#c9a84c] px-3 py-1 text-xs font-bold text-black">
+                  <div className="absolute -top-3 right-6 rounded-full bg-[#c9a84c] px-3 py-1 text-xs font-bold text-black animate-bounce-slow">
                     MOST POPULAR
                   </div>
                 )}
@@ -406,13 +437,16 @@ export function SSJSAgencyHome() {
                 >
                   Get Started
                 </a>
-              </div>
+              </GlowCard>
             ))}
-          </div>
-          <p className="mt-8 text-center text-sm text-gray-500">
-            Optional monthly maintenance from NPR 1,500/mo — includes hosting,
-            SSL, content updates & priority support. Cancel anytime.
-          </p>
+          </StaggerReveal>
+
+          <RevealOnScroll delay={600}>
+            <p className="mt-8 text-center text-sm text-gray-500">
+              Optional monthly maintenance from NPR 1,500/mo — includes hosting,
+              SSL, content updates & priority support. Cancel anytime.
+            </p>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -420,56 +454,63 @@ export function SSJSAgencyHome() {
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div>
-              <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
-                Why SSJS
-              </span>
-              <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-                Build First.
-                <br />
-                Pay After Approval.
-              </h2>
-              <p className="mt-6 leading-relaxed text-gray-400">
-                We don&apos;t ask for money upfront. We build your complete
-                website first — custom-designed, mobile-responsive, and loaded
-                with interactive features. You review it on your phone. Only
-                when you&apos;re happy do we connect your domain and collect
-                payment.
-              </p>
-              <div className="mt-8 space-y-4">
-                {[
-                  "100% custom design — no WordPress templates",
-                  "Interactive calculators & booking engines",
-                  "Mobile-first for Nepal&apos;s smartphone users",
-                  "24-hour domain handover after approval",
-                  "Full ownership — your code, your domain, your data",
-                  "Pay via bank transfer, eSewa, Khalti or Fonepay",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <span className="mt-1 text-[#c9a84c]">◆</span>
-                    <span className="text-gray-300">{item}</span>
+            <RevealOnScroll direction="left">
+              <div>
+                <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
+                  Why SSJS
+                </span>
+                <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+                  Build First.
+                  <br />
+                  Pay After Approval.
+                </h2>
+                <p className="mt-6 leading-relaxed text-gray-400">
+                  We don&apos;t ask for money upfront. We build your complete
+                  website first — custom-designed, mobile-responsive, and loaded
+                  with interactive features. You review it on your phone. Only
+                  when you&apos;re happy do we connect your domain and collect
+                  payment.
+                </p>
+                <div className="mt-8 space-y-4">
+                  {[
+                    "100% custom design — no WordPress templates",
+                    "Interactive calculators & booking engines",
+                    "Mobile-first for Nepal&apos;s smartphone users",
+                    "24-hour domain handover after approval",
+                    "Full ownership — your code, your domain, your data",
+                    "Pay via bank transfer, eSewa, Khalti or Fonepay",
+                  ].map((item, i) => (
+                    <RevealOnScroll key={item} delay={i * 100} direction="left">
+                      <div className="flex items-start gap-3">
+                        <span className="mt-1 text-[#c9a84c]">◆</span>
+                        <span className="text-gray-300">{item}</span>
+                      </div>
+                    </RevealOnScroll>
+                  ))}
+                </div>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll direction="right">
+              <GlowCard className="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+                <div className="mb-6 text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
+                  Client Testimonial
+                </div>
+                <blockquote className="text-lg leading-relaxed text-gray-300 italic">
+                  &ldquo;SSJS built our complete hotel booking website with
+                  multi-currency rates and direct WhatsApp reservations. We saved
+                  thousands in OTA commissions within the first month.&rdquo;
+                </blockquote>
+                <div className="mt-6 border-t border-white/5 pt-4">
+                  <div className="font-semibold text-white">
+                    Boutique Heritage Home
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
-              <div className="mb-6 text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
-                Client Testimonial
-              </div>
-              <blockquote className="text-lg leading-relaxed text-gray-300 italic">
-                &ldquo;SSJS built our complete hotel booking website with
-                multi-currency rates and direct WhatsApp reservations. We saved
-                thousands in OTA commissions within the first month.&rdquo;
-              </blockquote>
-              <div className="mt-6 border-t border-white/5 pt-4">
-                <div className="font-semibold text-white">
-                  Boutique Heritage Home
+                  <div className="text-sm text-gray-500">
+                    150-Year Heritage Hotel · Patan, Lalitpur
+                  </div>
                 </div>
-                <div className="text-sm text-gray-500">
-                  150-Year Heritage Hotel · Patan, Lalitpur
-                </div>
-              </div>
-            </div>
+              </GlowCard>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -477,15 +518,18 @@ export function SSJSAgencyHome() {
       {/* FAQ Section */}
       <section className="py-24">
         <div className="mx-auto max-w-4xl px-6">
-          <div className="mb-12 text-center">
-            <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
-              Common Questions
-            </span>
-            <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-              Frequently Asked Questions
-            </h2>
-          </div>
-          <div className="space-y-4">
+          <RevealOnScroll>
+            <div className="mb-12 text-center">
+              <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
+                Common Questions
+              </span>
+              <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+                Frequently Asked Questions
+              </h2>
+            </div>
+          </RevealOnScroll>
+
+          <StaggerReveal className="space-y-4" staggerMs={80}>
             {[
               {
                 q: "How much does a website cost?",
@@ -533,108 +577,115 @@ export function SSJSAgencyHome() {
                 </div>
               </details>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 
       {/* Contact / CTA */}
       <section id="contact" className="bg-[#060b18] py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
-            Start Your Project
-          </span>
-          <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-            Ready to Transform Your
-            <br />
-            Digital Presence?
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-gray-400">
-            Tell us about your business. We&apos;ll build a custom preview —
-            free, no obligation — so you can see exactly what your new website
-            will look like.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="https://wa.me/9779847509025?text=Hello%20SSJS%20Web%20Agency!%20I%27d%20like%20to%20discuss%20a%20website%20for%20my%20business."
-              className="flex items-center gap-2 rounded-full bg-green-600 px-8 py-3.5 text-base font-bold text-white transition hover:bg-green-500"
-            >
-              <svg
-                className="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
+          <RevealOnScroll>
+            <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
+              Start Your Project
+            </span>
+            <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+              Ready to Transform Your
+              <br />
+              Digital Presence?
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-gray-400">
+              Tell us about your business. We&apos;ll build a custom preview —
+              free, no obligation — so you can see exactly what your new website
+              will look like.
+            </p>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={300}>
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <MagneticButton
+                href="https://wa.me/9779847509025?text=Hello%20SSJS%20Web%20Agency!%20I%27d%20like%20to%20discuss%20a%20website%20for%20my%20business."
+                className="flex items-center gap-2 rounded-full bg-green-600 px-8 py-3.5 text-base font-bold text-white transition hover:bg-green-500"
               >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              WhatsApp Us
-            </a>
-            <a
-              href="mailto:hello@yuvrajojha.com.np?subject=SSJS%20Web%20Agency%20%E2%80%94%20Website%20Project%20Inquiry"
-              className="rounded-full border border-white/10 px-8 py-3.5 text-base font-semibold text-white transition hover:border-[#c9a84c]/30 hover:bg-white/5"
-            >
-              hello@yuvrajojha.com.np
-            </a>
-          </div>
-          <p className="mt-6 text-sm text-gray-500">
-            📞 +977 9847509025 · Kathmandu, Nepal
-          </p>
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                WhatsApp Us
+              </MagneticButton>
+              <MagneticButton
+                href="mailto:hello@yuvrajojha.com.np?subject=SSJS%20Web%20Agency%20%E2%80%94%20Website%20Project%20Inquiry"
+                className="rounded-full border border-white/10 px-8 py-3.5 text-base font-semibold text-white transition hover:border-[#c9a84c]/30 hover:bg-white/5"
+              >
+                hello@yuvrajojha.com.np
+              </MagneticButton>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={500}>
+            <p className="mt-6 text-sm text-gray-500">
+              📞 +977 9847509025 · Kathmandu, Nepal
+            </p>
+          </RevealOnScroll>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-white/5 py-12">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div>
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/ssjs-logo.png"
-                  alt="SSJS Web Agency"
-                  width={32}
-                  height={32}
-                  className="rounded-lg"
-                />
-                <div>
-                  <span className="text-base font-bold text-white">SSJS</span>
-                  <span className="ml-1 text-xs font-medium tracking-wider text-[#c9a84c] uppercase">
-                    Web Agency
-                  </span>
+          <RevealOnScroll>
+            <div className="grid gap-8 md:grid-cols-3">
+              <div>
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/ssjs-logo.png"
+                    alt="SSJS Web Agency"
+                    width={32}
+                    height={32}
+                    className="rounded-lg"
+                  />
+                  <div>
+                    <span className="text-base font-bold text-white">SSJS</span>
+                    <span className="ml-1 text-xs font-medium tracking-wider text-[#c9a84c] uppercase">
+                      Web Agency
+                    </span>
+                  </div>
                 </div>
+                <p className="mt-4 text-sm leading-relaxed text-gray-500">
+                  Premium web design & development agency based in Nepal. Building
+                  revenue-generating websites for ambitious businesses.
+                </p>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-gray-500">
-                Premium web design & development agency based in Nepal. Building
-                revenue-generating websites for ambitious businesses.
-              </p>
+              <div>
+                <h4 className="mb-4 text-sm font-bold tracking-wider text-white uppercase">
+                  Services
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-500">
+                  <li>Custom Website Design</li>
+                  <li>Booking & Reservation Systems</li>
+                  <li>SEO & Google Visibility</li>
+                  <li>E-Commerce Solutions</li>
+                  <li>Monthly Maintenance</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-4 text-sm font-bold tracking-wider text-white uppercase">
+                  Contact
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-500">
+                  <li>
+                    <a
+                      href="mailto:hello@yuvrajojha.com.np"
+                      className="transition hover:text-[#c9a84c]"
+                    >
+                      hello@yuvrajojha.com.np
+                    </a>
+                  </li>
+                  <li>+977 9847509025</li>
+                  <li>Kathmandu, Nepal</li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <h4 className="mb-4 text-sm font-bold tracking-wider text-white uppercase">
-                Services
-              </h4>
-              <ul className="space-y-2 text-sm text-gray-500">
-                <li>Custom Website Design</li>
-                <li>Booking & Reservation Systems</li>
-                <li>SEO & Google Visibility</li>
-                <li>E-Commerce Solutions</li>
-                <li>Monthly Maintenance</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="mb-4 text-sm font-bold tracking-wider text-white uppercase">
-                Contact
-              </h4>
-              <ul className="space-y-2 text-sm text-gray-500">
-                <li>
-                  <a
-                    href="mailto:hello@yuvrajojha.com.np"
-                    className="transition hover:text-[#c9a84c]"
-                  >
-                    hello@yuvrajojha.com.np
-                  </a>
-                </li>
-                <li>+977 9847509025</li>
-                <li>Kathmandu, Nepal</li>
-              </ul>
-            </div>
-          </div>
+          </RevealOnScroll>
+
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
             <p className="text-xs text-gray-600">
               © {new Date().getFullYear()} SSJS Web Agency. All rights

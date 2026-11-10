@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { BUSINESSES } from "@/data/businesses";
 import { KORA_BUSINESSES } from "@/data/kora-businesses";
+import { SiteNav } from "@/components/SiteNav";
+import { RevealOnScroll, AnimatedCounter, FloatingOrbs } from "@/components/Animations";
 
 const PORTFOLIO = [
   ...KORA_BUSINESSES.map((b) => ({
@@ -176,62 +178,11 @@ export function SSJSAgencyHome() {
       />
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#030712]/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/ssjs-logo.png"
-              alt="SSJS Web Agency"
-              width={40}
-              height={40}
-              className="rounded-lg"
-            />
-            <div>
-              <span className="text-lg font-bold tracking-tight text-white">
-                SSJS
-              </span>
-              <span className="ml-1 text-xs font-medium tracking-[0.2em] text-[#c9a84c] uppercase">
-                Web Agency
-              </span>
-            </div>
-          </div>
-          <div className="hidden items-center gap-8 md:flex">
-            <a
-              href="/services"
-              className="text-sm text-gray-400 transition hover:text-white"
-            >
-              Services
-            </a>
-            <a
-              href="/portfolio"
-              className="text-sm text-gray-400 transition hover:text-white"
-            >
-              Portfolio
-            </a>
-            <a
-              href="#process"
-              className="text-sm text-gray-400 transition hover:text-white"
-            >
-              Process
-            </a>
-            <a
-              href="#pricing"
-              className="text-sm text-gray-400 transition hover:text-white"
-            >
-              Pricing
-            </a>
-            <a
-              href="/contact"
-              className="rounded-full bg-[#c9a84c] px-5 py-2 text-sm font-semibold text-black transition hover:bg-[#d4b85c]"
-            >
-              Get Started
-            </a>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* Hero */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
+        <FloatingOrbs />
         <div className="absolute inset-0 bg-gradient-to-b from-[#c9a84c]/5 via-transparent to-transparent" />
         <div className="absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a84c]/5 blur-[150px]" />
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
@@ -268,7 +219,9 @@ export function SSJSAgencyHome() {
           </div>
           <div className="mt-16 grid grid-cols-3 gap-8 border-t border-white/5 pt-10">
             <div>
-              <div className="text-3xl font-bold text-[#c9a84c]">22+</div>
+              <div className="text-3xl font-bold text-[#c9a84c]">
+                <AnimatedCounter end={22} suffix="+" />
+              </div>
               <div className="text-sm text-gray-500">Websites Built</div>
             </div>
             <div>
@@ -286,18 +239,20 @@ export function SSJSAgencyHome() {
       {/* Services */}
       <section id="services" className="py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-16 text-center">
-            <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
-              What We Do
-            </span>
-            <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-              Services Built for Growth
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-              Every website we build is engineered to convert visitors into
-              paying customers — with features your current site is missing.
-            </p>
-          </div>
+          <RevealOnScroll>
+            <div className="mb-16 text-center">
+              <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
+                What We Do
+              </span>
+              <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+                Services Built for Growth
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-400">
+                Every website we build is engineered to convert visitors into
+                paying customers — with features your current site is missing.
+              </p>
+            </div>
+          </RevealOnScroll>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
               <div
@@ -318,18 +273,20 @@ export function SSJSAgencyHome() {
       {/* Portfolio */}
       <section id="portfolio" className="bg-[#060b18] py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-16 text-center">
-            <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
-              Our Work
-            </span>
-            <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-              Client Portfolio
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-              Real websites built for real businesses across Nepal. Click any
-              project to see the live preview.
-            </p>
-          </div>
+          <RevealOnScroll>
+            <div className="mb-16 text-center">
+              <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
+                Our Work
+              </span>
+              <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+                Client Portfolio
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-400">
+                Real websites built for real businesses across Nepal. Click any
+                project to see the live preview.
+              </p>
+            </div>
+          </RevealOnScroll>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PORTFOLIO.map((p) => (
               <a
@@ -363,18 +320,20 @@ export function SSJSAgencyHome() {
       {/* Process */}
       <section id="process" className="py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-16 text-center">
-            <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
-              How It Works
-            </span>
-            <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-              Our Process
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-              From first conversation to live website in days — not months.
-              Transparent, efficient, and built around your schedule.
-            </p>
-          </div>
+          <RevealOnScroll>
+            <div className="mb-16 text-center">
+              <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
+                How It Works
+              </span>
+              <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+                Our Process
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-400">
+                From first conversation to live website in days — not months.
+                Transparent, efficient, and built around your schedule.
+              </p>
+            </div>
+          </RevealOnScroll>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {PROCESS.map((p) => (
               <div key={p.step} className="relative">
@@ -394,18 +353,20 @@ export function SSJSAgencyHome() {
       {/* Pricing */}
       <section id="pricing" className="bg-[#060b18] py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-16 text-center">
-            <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
-              Transparent Pricing
-            </span>
-            <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
-              Simple, Fair Pricing
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-              No hidden fees. No long-term contracts. Pay only after you approve
-              the finished website.
-            </p>
-          </div>
+          <RevealOnScroll>
+            <div className="mb-16 text-center">
+              <span className="text-sm font-medium tracking-wider text-[#c9a84c] uppercase">
+                Transparent Pricing
+              </span>
+              <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+                Simple, Fair Pricing
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-400">
+                No hidden fees. No long-term contracts. Pay only after you approve
+                the finished website.
+              </p>
+            </div>
+          </RevealOnScroll>
           <div className="grid gap-8 md:grid-cols-3">
             {PRICING.map((tier) => (
               <div

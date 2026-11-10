@@ -16,7 +16,7 @@ import type { KoraBusinessConfig } from "@/data/kora-businesses";
 
 const CONCIERGE_WHATSAPP = "9779847509025";
 const CONCIERGE_PHONE_DISPLAY = "+977 9847509025";
-const CONCIERGE_EMAIL = "imyuvojha@gmail.com";
+const CONCIERGE_EMAIL = "hello@yuvrajojha.com.np";
 
 export function KoraPreviewConcierge({
   business,
@@ -49,13 +49,13 @@ export function KoraPreviewConcierge({
   if (!isPreview || dismissed) return null;
 
   const whatsappHref = `https://wa.me/${CONCIERGE_WHATSAPP}?text=${encodeURIComponent(
-    `Hello Atelier Kora (Yuvraj) — We just reviewed the custom flagship preview built for ${business.name} (${business.neighborhood}) and would like to discuss deploying it on our official domain.`
+    `Hello SSJS Web Agency — We just reviewed the custom flagship preview built for ${business.name} (${business.neighborhood}) and would like to discuss deploying it on our official domain.`
   )}`;
 
   const mailtoHref = `mailto:${CONCIERGE_EMAIL}?subject=${encodeURIComponent(
-    `Domain Launch — ${business.name} (Atelier Kora Preview)`
+    `Domain Launch — ${business.name} (SSJS Web Agency Preview)`
   )}&body=${encodeURIComponent(
-    `Hello Yuvraj / Atelier Kora,\n\nWe reviewed the custom digital flagship built for ${business.name} and would like to discuss connecting it to our official domain.\n\nWarm regards,\n${business.name}`
+    `Hello SSJS Web Agency,\n\nWe reviewed the custom digital flagship built for ${business.name} and would like to discuss connecting it to our official domain.\n\nWarm regards,\n${business.name}`
   )}`;
 
   return (
@@ -69,7 +69,7 @@ export function KoraPreviewConcierge({
             <div className="text-xs leading-snug sm:text-sm">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-amber-300/90">
-                  Atelier Kora · Private Preview
+                  SSJS Web Agency · Private Preview
                 </span>
                 <span className="hidden text-stone-600 sm:inline">•</span>
                 <span className="font-medium text-white">{business.shortName}</span>
@@ -120,7 +120,7 @@ export function KoraPreviewConcierge({
 
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/25 bg-amber-400/10 px-3.5 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-amber-300">
               <Sparkles className="h-3.5 w-3.5" />
-              Atelier Kora · Bespoke Handover
+              SSJS Web Agency · Bespoke Handover
             </div>
 
             <h3 className="mt-3.5 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -196,7 +196,7 @@ export function KoraPreviewConcierge({
 
             <p className="mt-4 text-center font-mono text-[11px] text-stone-500">
               <Globe className="mr-1 inline h-3 w-3" />
-              Atelier Kora · Digital Architecture Studio · Kathmandu, Nepal
+              SSJS Web Agency · Premium Web Design · Kathmandu, Nepal
             </p>
           </div>
         </div>

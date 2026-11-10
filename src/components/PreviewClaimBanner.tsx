@@ -15,7 +15,7 @@ import type { BusinessConfig } from "@/data/businesses";
 
 const FOUNDER_WHATSAPP = "9779847509025";
 const FOUNDER_PHONE_DISPLAY = "+977 9847509025";
-const FOUNDER_EMAIL = "imyuvojha@gmail.com";
+const FOUNDER_EMAIL = "hello@yuvrajojha.com.np";
 
 export function PreviewClaimBanner({
   business,
@@ -48,13 +48,13 @@ export function PreviewClaimBanner({
   if (!isPreview || dismissed) return null;
 
   const whatsappHref = `https://wa.me/${FOUNDER_WHATSAPP}?text=${encodeURIComponent(
-    `Hi Yuvraj! We just checked the live preview website you built for ${business.name} (${business.neighborhood}, ${business.city}) and would like to discuss connecting it to our domain.`
+    `Hello SSJS Web Agency! We just checked the live preview website you built for ${business.name} (${business.neighborhood}, ${business.city}) and would like to discuss connecting it to our domain.`
   )}`;
 
   const mailtoHref = `mailto:${FOUNDER_EMAIL}?subject=${encodeURIComponent(
     `Interested in activating website for ${business.name}`
   )}&body=${encodeURIComponent(
-    `Hi Yuvraj,\n\nWe checked the live preview built for ${business.name} (${business.neighborhood}, ${business.city}) and would like to discuss putting it live on our domain.\n\nBest regards,\n${business.name}`
+    `Hi SSJS Web Agency,\n\nWe checked the live preview built for ${business.name} (${business.neighborhood}, ${business.city}) and would like to discuss putting it live on our domain.\n\nBest regards,\n${business.name}`
   )}`;
 
   return (
@@ -164,7 +164,7 @@ export function PreviewClaimBanner({
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-400"
               >
                 <MessageCircle className="h-4 w-4" />
-                WhatsApp Yuvraj ({FOUNDER_PHONE_DISPLAY})
+                WhatsApp SSJS Agency ({FOUNDER_PHONE_DISPLAY})
               </a>
               <div className="grid grid-cols-2 gap-2.5">
                 <a

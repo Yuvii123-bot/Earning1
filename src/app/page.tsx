@@ -14,6 +14,7 @@ import { ClinicalAestheticEngine } from "@/components/kora/ClinicalAestheticEngi
 import { HimalayanExpeditionEngine } from "@/components/kora/HimalayanExpeditionEngine";
 import { ArtisanalExportEngine } from "@/components/kora/ArtisanalExportEngine";
 import { AtelierKoraShowcase } from "@/components/kora/AtelierKoraShowcase";
+import { SSJSAgencyHome } from "@/components/SSJSAgencyHome";
 
 async function resolveCustomDomainSlug(): Promise<string | null> {
   try {
@@ -77,9 +78,9 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
-    title: "Atelier Kora — Bespoke Digital Architecture & Booking Systems (Nepal)",
+    title: "SSJS Web Agency — Premium Web Design & Development | Nepal",
     description:
-      "Bespoke digital flagships, multi-currency booking engines, architectural BOQ calculators, and global export portals crafted for Nepal's most discerning brands.",
+      "Custom websites, interactive booking systems, and digital solutions for Nepal's most ambitious businesses. Hotels, clinics, tour operators & exporters. Starting NPR 10,999.",
   };
 }
 
@@ -118,5 +119,5 @@ export default async function HomePage() {
     }
   }
 
-  return <AtelierKoraShowcase />;
+  return <SSJSAgencyHome />;
 }

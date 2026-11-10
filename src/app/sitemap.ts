@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { BUSINESSES } from "@/data/businesses";
 import { KORA_BUSINESSES } from "@/data/kora-businesses";
+import { BLOG_POSTS } from "@/data/blog-posts";
 
 const BASE = "https://ssjs-web-agency.vercel.app";
 
@@ -56,7 +57,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: `${BASE}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/faq`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/team`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${BASE}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
   ];
+
+  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+    url: `${BASE}/blog/${post.slug}`,
+    lastModified: post.date,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
 
   const portfolioPages: MetadataRoute.Sitemap = [
     ...KORA_BUSINESSES.map((b) => ({
@@ -73,5 +105,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticPages, ...portfolioPages];
+  return [...staticPages, ...blogPages, ...portfolioPages];
 }
